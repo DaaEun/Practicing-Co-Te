@@ -25,7 +25,6 @@
     ex #2)   N = 4   stages = [4,4,4,4,4]                result = [4,1,2,3]
 
     ex #1 풀이)
-
     1번 스테이지에는 총 8명의 사용자가 도전했으며, 이 중 1명의 사용자가 아직 클리어하지 못했다.
     1번 스테이지 실패율 : 1/8
 
@@ -43,9 +42,7 @@
 
 
     ex #2 풀이)
-
     모든 사용자가 마지막 스테이지에 있으므로 4번 스테이지의 실패율은 1이며 나머지 스테이지의 실패율은 0이다.
-
     [4,1,2,3]
 */
 
@@ -55,7 +52,6 @@ function solution(N, stages) {
     
     // 1. 각 스테이지의 실패율 계산
     for(var j = 0; j < N; j++){
-
         var child = 0;  // 스테이지에 도달했으나 아직 클리어하지 못한 플레이어의 수
         var mom = 0;    // 스테이지에 도달한 플레이어 수
 
@@ -75,11 +71,9 @@ function solution(N, stages) {
         
     // 2. 실패율이 높은 스테이지부터 내림차순 정렬
     for(var n = 0; n < N; n++){
-        
         var maxRate = Math.max.apply(null, failRates);  // 가장 높은 실패율
 
         for(var m = 0; m < N; m++){
-
             if(failRates[m] == maxRate){
                 answer.push(m+1);   // maxRate과 같은 실패율의 스테이지 번호 출력
                 failRates[m] = null;  // 해당 실패율 값 제거 
