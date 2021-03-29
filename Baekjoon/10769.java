@@ -10,11 +10,12 @@ public class Main {
 		int happy = 0;
 		int sad = 0;
 		for(String a : arr) {
-			String temp = a.substring(0,1);
-			if(temp.equals(")")) happy++;
-			if(temp.equals("(")) sad++;
+			if(!a.equals("")) {
+				String temp = a.substring(0,1);
+				if(temp.equals(")")) happy++;
+				if(temp.equals("(")) sad++;
+			}
 		} //for-end
-
 		if(happy == 0 && sad == 0) System.out.println("none");
 		else {
 			if(happy == sad) System.out.println("unsure");
