@@ -16,56 +16,51 @@ public class Main {
 				ABCD[j][i] = Integer.parseInt(abcd[j]);
 		}
 
-		int n2 = (int) Math.pow(n, 2);
-		long[] AB = new long[n2];
-		long[] CD = new long[n2];
+		int[] AB = new int[n*n];
+		int[] CD = new int[n*n];
 
 		int idx = 0;
-		for(long a : ABCD[0]) {
-			for(long b : ABCD[1]) { 
-				AB[idx] = a+b;
+		for(int i = 0; i < n; i++) {
+			for(int j = 0; j < n; j++) {
+				AB[idx] = ABCD[0][i] + ABCD[1][j];
+				CD[idx] = ABCD[2][i] + ABCD[3][j];
 				idx++;
 			}
 		}
-
-		idx = 0;
-		for(long c : ABCD[2]) {
-			for(long d : ABCD[3]) {
-				CD[idx] = c+d;
-				idx++;
-			}
-		}
-
 
 		Arrays.sort(AB);
 		Arrays.sort(CD);
 		
-		int answer = 0;
-		int point = n2-1;
-
-		for(int i=0; i <n2; i++){
-
-			if(AB[i] <= 0) {
-				for(int idx2 = n2-1; idx2 >= 0; idx2--) {
-					if(CD[idx2] < 0) {
-						point = idx2; 
-						break;
-					}
-					else {
-						if(AB[i] + CD[idx2] == 0) answer++;
-						else if(AB[i] + CD[idx2] < 0) break; 
-					}
+	    int AB_idx = 0;
+	    int CD_idx = CD.length-1;
+		long answer = 0;
+		while(AB_idx < AB.length && CD_idx >= 0) {
+			long AB_sum = AB[AB_idx];
+			long CD_sum = CD[CD_idx];
+			long sum = AB_sum + CD_sum;
+			int AB_cnt = 0;
+			int CD_cnt = 0;
+			if(sum == 0) {
+				while(AB_idx < AB.length && AB[AB_idx] == AB_sum) {
+					AB_idx++;
+					AB_cnt++;
 				}
-			}//if-end
-			else { 
-				for(int idx3 = 0; idx3 <= point; idx3++) {
-					if(AB[i] + CD[idx3] == 0) answer++;
-					else if(AB[i] + CD[idx3] > 0) break; 
+				while(CD_idx >= 0 && CD[CD_idx] == CD_sum) {
+					CD_idx--;
+					CD_cnt++;
 				}
-			}//else-end
+				answer += AB_cnt * CD_cnt;
+			} 
+			else if(sum > 0) {
+				CD_idx--;
+			}
+			else {
+				AB_idx++;
+			}
 		}
-
 		System.out.println(answer);
 		sc.close();
 	}
 }
+// 런타임 에러 (X)
+// 틀렸습니다.(O)
