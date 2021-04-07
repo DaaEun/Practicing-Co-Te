@@ -13,8 +13,8 @@ cheap_oil = oilPrice[0]
 
 for i, price in enumerate(oilPrice):
 
-    # oilPrice의 크기가 road의 크기보다 1 크다.
-    if(i == len(road)): break
+    # road의 크기는 oilPrice의 크기보다 1 작다.
+    if(i == n-1): break
 
     if(cheap_oil > price): 
         cheap_oil = price
