@@ -1,17 +1,18 @@
 import sys
 
-def Recursive_Power(C, n, division):
-    if n == 1:
-        return C % division
+# 분할정복 알고리즘 재귀함수
+def Divide_Conquer(base, power, division):
+    if power == 1:
+        return base % division
 
-    if n % 2 == 0:
-        y = Recursive_Power(C,n/2, division)
-        return (y*y) % division
+    if power % 2 == 0:
+        tmp = Divide_Conquer(base, power/2, division)
+        return (tmp * tmp) % division
 
     else:
-        y= Recursive_Power(C,(n-1)/2, division)
-        return (y*y*C) % division
+        tmp = Divide_Conquer(base, (power-1)/2, division)
+        return (tmp * tmp * base) % division
 
+# main
 a,b,c = map(int,sys.stdin.readline().split()) 
-
-print(Recursive_Power(a,b,c))
+print(Divide_Conquer(a,b,c))
