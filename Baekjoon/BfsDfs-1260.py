@@ -41,9 +41,6 @@ for i in range(m):
     graph[x][y] = 1
     graph[y][x] = 1
 
-print(graph)
-print(visit)
-
 dfs(v)
 print()
 bfs(v)
