@@ -1,8 +1,8 @@
 # .vscode
 # .exe
 
-# *.vs
-# Debug
+*.vs
+Debug
 
 *.sln
 *.vcxproj
