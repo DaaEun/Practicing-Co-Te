@@ -1,5 +1,5 @@
-# .vscode
-# .exe
+.vscode
+.exe
 
 *.vs
 Debug
