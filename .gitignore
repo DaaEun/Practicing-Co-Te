@@ -11,3 +11,6 @@ Debug
 
 
 /Programmers/Co_Te
+
+*.metadata
+bin/
