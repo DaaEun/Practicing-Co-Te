@@ -21,7 +21,7 @@ class Solution {
 					stack.push(tmp);
 				}
 				else {
-//					time++;
+					time++;
 					stack.pop();
 				}
 			}
